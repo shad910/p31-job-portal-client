@@ -7,9 +7,9 @@ const Footer = () => {
             <aside>
                 <Link to="/" className='flex items-center mb-2'>
                     <img className='w-7' src="https://i.ibb.co/vpwhhpt/logo.png" alt="logo"  />
-                    <span className="text-2xl font-bold">
+                    <span className="text-xl font-bold">
                         <span className='text-blue-400'>
-                            Room</span>Sync
+                            CAREER-</span>CODE
                     </span>
                 </Link>
                 <p className='text-xs text-gray-500'>

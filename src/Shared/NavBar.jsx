@@ -1,35 +1,36 @@
-// import React, { use, useState } from 'react';
+import React, { use, useState } from 'react';
 import { Link, NavLink } from 'react-router';
-// import AuthContext from '../Contexts/AuthContext';
+import AuthContext from '../Contexts/AuthContext';
 import ThemeController from './ThemeController';
+
 
 const NavBar = () => {
 
-    // const { user, handleLogout } = use(AuthContext);
-    // const [isHovered, setIsHovered] = useState(false);
+    const { user, handleLogout } = use(AuthContext);
+    const [isHovered, setIsHovered] = useState(false);
 
     const links = <>
         <li><NavLink to="/">Home</NavLink></li>
         <li><NavLink to="/add-roommates">Add Roommates</NavLink></li>
         <li><NavLink to="/browse-listing">Browse Listing</NavLink></li>
-        {/* {
+        {
             user ? <li><NavLink to="/my-listings">My Listings</NavLink></li> : ""
-        } */}
+        }
     </>
 
-    // const Logout = () => {
-    //     handleLogout()
-    //     setIsHovered(false);
-    // };
+    const Logout = () => {
+        handleLogout()
+        setIsHovered(false);
+    };
 
     return (
         <nav className="md:w-11/12 mx-auto navbar  ">
             <section className="navbar-start">
                 <Link to="/" className='flex items-center'>
                     <img className='w-7' src="https://i.ibb.co/vpwhhpt/logo.png" alt="logo" />
-                    <span className="text-2xl font-bold">
+                    <span className="text-xl font-bold">
                         <span className='text-blue-400'>
-                            Room</span>Sync
+                            CAREER-</span>CODE
                     </span>
                 </Link>
             </section>
@@ -43,7 +44,7 @@ const NavBar = () => {
             <section className="navbar-end gap-1.5 md:gap-5">
                 <ThemeController></ThemeController>
 
-                {/* {user ? (
+                {user ? (
                     <div
                         className="relative"
                         onMouseEnter={() => setIsHovered(true)}
@@ -68,7 +69,7 @@ const NavBar = () => {
                         <Link to="/auth/login" className="btn btn-sm btn-primary">Login</Link>
                         <Link to="/auth/register" className="btn btn-sm btn-secondary">Register</Link>
                     </div>
-                )} */}
+                )}
 
                 <div className="dropdown dropdown-end">
                     <div tabIndex={0} role="button" className="btn btn-sm lg:hidden">
