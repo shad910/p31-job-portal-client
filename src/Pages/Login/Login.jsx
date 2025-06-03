@@ -119,11 +119,11 @@ const Login = () => {
 
                     <form onSubmit={handleLogin} className="space-y-4">
                         <div>
-                            <label className="block text-sm font-medium text-gray-700">Username or Email address *</label>
+                            <label className="block text-sm font-medium text-gray-700">Email address *</label>
                             <input
                             name='email'
                                 type="text"
-                                placeholder="Steven Job"
+                                placeholder="Enter your email address"
                                 className="input input-bordered w-full mt-1"
                                 required
                             />
@@ -134,7 +134,7 @@ const Login = () => {
                             <input
                             name='password'
                                 type="password"
-                                placeholder="**********"
+                                placeholder="enter your password"
                                 className="input input-bordered w-full mt-1"
                                 required
                             />

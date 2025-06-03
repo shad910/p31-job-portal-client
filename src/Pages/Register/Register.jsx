@@ -36,7 +36,7 @@ const Register = () => {
             email: email,
         }
 
-console.log(newUser);
+        console.log(newUser);
 
         setSuccessMessage(false);
         setErrorMessage("");
