@@ -11,8 +11,8 @@ const NavBar = () => {
 
     const links = <>
         <li><NavLink to="/">Home</NavLink></li>
-        <li><NavLink to="/add-roommates">Add Roommates</NavLink></li>
-        <li><NavLink to="/browse-listing">Browse Listing</NavLink></li>
+        <li><NavLink to="/jobs">Jobs</NavLink></li>
+        <li><NavLink to="/company">Company</NavLink></li>
         {
             user ? <li><NavLink to="/my-listings">My Listings</NavLink></li> : ""
         }
@@ -51,7 +51,7 @@ const NavBar = () => {
                     >
                         <div className="avatar">
                             <div className="ring-gray-100 ring-offset-base-100 w-9 p-0.5 rounded-full ring-2 ring-offset-2">
-                                <img className='rounded-full' src={user?.photoURL} alt="User avatar" />
+                                <img className='rounded-full' src={user?.photoURL} data-reference="no-reference" alt="User avatar" />
                             </div>
                         </div>
                         {isHovered && (

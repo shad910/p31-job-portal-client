@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from "motion/react"
 import team1 from '../../assets/team/team1.png';
 import team2 from '../../assets/team/team2.png';
+import { Link } from 'react-router';
 
 
 const Banner = () => {
@@ -33,13 +34,23 @@ const Banner = () => {
                         <div className="mt-12 text-left">
                             <p className="text-gray-400 text-sm mb-3">Trusted by</p>
                             <div className="flex items-center gap-4 md:gap-8 flex-wrap">
-                                <img src="https://i.ibb.co/9ktRGF9F/google.png" alt="Google" />
 
-                                <img src="https://i.ibb.co/hxTbLj3n/microsoft.png" alt="Microsoft" />
+                                <Link to="https://www.google.com/">
+                                    <img src="https://i.ibb.co/9ktRGF9F/google.png" alt="Google" />
+                                </Link>
 
-                                <img src="https://i.ibb.co/XxXZFQVy/facebook.png" alt="Facebook" />
+                                <Link to="https://www.microsoft.com/en-us/">
+                                    <img src="https://i.ibb.co/hxTbLj3n/microsoft.png" alt="Microsoft" />
+                                </Link>
 
-                                <img src="https://i.ibb.co/B5yzJr54/X.png" alt="X" />
+                                <Link to="https://www.facebook.com/">
+                                    <img src="https://i.ibb.co/XxXZFQVy/facebook.png" alt="Facebook" />
+                                </Link>
+
+                                <Link to="https://x.com/">
+                                    <img src="https://i.ibb.co/B5yzJr54/X.png" alt="X" />
+                                </Link>
+
                             </div>
                         </div>
                     </div>
@@ -61,7 +72,7 @@ const Banner = () => {
                             animate={{
                                 x: [100, 160, 100],
 
-                                transition: { duration: 8, delay:2, repeat: Infinity }
+                                transition: { duration: 8, delay: 2, repeat: Infinity }
                             }}
                             className="max-w-xs rounded-t-[40px] rounded-r-[30px] border-blue-400 border-l-8 border-b-8 shadow-2xl"
                         />
