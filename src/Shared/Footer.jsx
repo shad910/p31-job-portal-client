@@ -5,8 +5,8 @@ const Footer = () => {
     return (
         <footer className='grid grid-cols-1 md:grid-cols-4 justify-self-center gap-6 md:gap-20 p-6 bg-base-300 '>
             <aside>
-                <Link to="/" className='flex items-center mb-2'>
-                    <img className='w-7' src="https://i.ibb.co/vpwhhpt/logo.png" alt="logo"  />
+                <Link to="/" className='flex items-center gap-0.5 mb-2'>
+                    <img className='w-6' src="https://i.ibb.co.com/KjYLPHzm/code.png" alt="logo"  />
                     <span className="text-xl font-bold">
                         <span className='text-blue-400'>
                             CAREER-</span>CODE

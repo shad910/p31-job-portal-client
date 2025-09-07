@@ -26,8 +26,8 @@ const NavBar = () => {
     return (
         <nav className="md:w-11/12 mx-auto navbar  ">
             <section className="navbar-start">
-                <Link to="/" className='flex items-center'>
-                    <img className='w-7' src="https://i.ibb.co/vpwhhpt/logo.png" alt="logo" />
+                <Link to="/" className='flex items-center gap-0.5'>
+                    <img className='w-6' src="https://i.ibb.co.com/KjYLPHzm/code.png" alt="logo" />
                     <span className="text-xl font-bold">
                         <span className='text-blue-400'>
                             CAREER-</span>CODE
