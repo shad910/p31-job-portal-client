@@ -3,17 +3,18 @@ import { motion } from "motion/react"
 import team1 from '../../assets/team/team1.png';
 import team2 from '../../assets/team/team2.png';
 import { Link } from 'react-router';
+import { NavLink } from 'react-router';
 
 
 const Banner = () => {
     return (
         <div className=" w-11/12 mx-auto  min-h-96">
-            <div className="flex flex-col lg:flex-row">
+            <div className="flex flex-col justify-center items-center lg:flex-row">
 
-                <section className="flex-1  py-10 px-4 md:px-10">
+                <section className="flex-1  py-8 px-4 md:px-10">
                     <div className="max-w-4xl mx-auto ">
-                        <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight">
-                            Find Jobs,<br />
+                        <h1 className="poppins text-4xl md:text-5xl font-extrabold ">
+                            Find Jobs<br />
                             <motion.span
                                 animate={{
                                     color: ["#ff5733", "#4fc751", "#57bad0", "#bf7fe1", "#e17fbf", "#e56868"],
@@ -27,7 +28,7 @@ const Banner = () => {
                         </p>
 
                         <div className="mt-8 flex  gap-4 flex-wrap">
-                            <button className="btn  btn-primary px-6">Get Started</button>
+                            <NavLink to="/jobs" className="btn  btn-primary px-6">Get Started</NavLink>
                             <button className="btn btn-outline px-6">Learn more</button>
                         </div>
 
@@ -63,7 +64,7 @@ const Banner = () => {
                             animate={{
                                 y: [100, 160, 100],
 
-                                transition: { duration: 4, repeat: Infinity }
+                                transition: { duration: 6, repeat: Infinity }
                             }}
                             className="max-w-xs rounded-t-[40px] rounded-r-[30px] border-blue-400 border-l-8 border-b-8 shadow-2xl"
                         />
@@ -72,7 +73,7 @@ const Banner = () => {
                             animate={{
                                 x: [100, 160, 100],
 
-                                transition: { duration: 8, delay: 2, repeat: Infinity }
+                                transition: { duration: 10, delay: 2, repeat: Infinity }
                             }}
                             className="max-w-xs rounded-t-[40px] rounded-r-[30px] border-blue-400 border-l-8 border-b-8 shadow-2xl"
                         />

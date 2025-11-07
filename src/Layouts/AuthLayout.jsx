@@ -2,6 +2,7 @@ import React from 'react';
 import { Outlet, useNavigation } from "react-router"
 import NavBar from '../Shared/NavBar';
 import Footer from '../Shared/Footer';
+import Loading from '../Shared/Loading';
 
 const AuthLayout = () => {
 
@@ -14,7 +15,7 @@ const AuthLayout = () => {
                 <NavBar></NavBar>
             </header>
             <main>
-                {isNavigating && <GlobalSpinner />}
+                {isNavigating && <Loading></Loading>}
                 <Outlet />
             </main>
             <footer>

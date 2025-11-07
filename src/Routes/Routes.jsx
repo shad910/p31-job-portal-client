@@ -7,6 +7,10 @@ import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
 import ForgetPassword from "../Pages/Login/ForgetPassword";
 import LearnMore from "../Pages/Register/LearnMore";
+import Loading from "../Shared/Loading";
+import PrivateRoute from "../Provider/PrivateRoute";
+import Card from "../Pages/Card/Jobs";
+
 
 const router = createBrowserRouter([
   {
@@ -18,6 +22,15 @@ const router = createBrowserRouter([
         index: true,
         path: "/",
         Component: Home,
+      },
+      {
+        path: "jobs",
+        loader: () => fetch('http://localhost:5000/jobs'),
+        HydrateFallback: Loading,
+        element: <PrivateRoute>
+          <Card></Card>
+        </PrivateRoute>,
+        // Component: Card
       },
       {
         path: "about",

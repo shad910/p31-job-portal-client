@@ -9,7 +9,7 @@ const ThemeController = () => {
       setTheme(savedTheme);
     } else {
       if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        setTheme('sunset');
+        setTheme('dark');
       } else {
         setTheme('light');
       }
@@ -24,7 +24,7 @@ const ThemeController = () => {
   }, [theme]);
 
   const handleToggle = () => {
-    setTheme((prevTheme) => (prevTheme === 'light' ? 'sunset' : 'light'));
+    setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'));
   };
 
   return (
