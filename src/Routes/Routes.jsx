@@ -9,7 +9,11 @@ import ForgetPassword from "../Pages/Login/ForgetPassword";
 import LearnMore from "../Pages/Register/LearnMore";
 import Loading from "../Shared/Loading";
 import PrivateRoute from "../Provider/PrivateRoute";
-import Card from "../Pages/Card/Jobs";
+import JobCards from "../Shared/JobCards";
+import JobDetails from "../Pages/JobDetails";
+import JobsPage from "../Pages/JobsPage";
+import CategoryLayout from "../Layouts/CategoryLayout";
+// import CategoryHome from "../Pages/Category/CategoryHome";
 
 
 const router = createBrowserRouter([
@@ -25,12 +29,19 @@ const router = createBrowserRouter([
       },
       {
         path: "jobs",
-        loader: () => fetch('http://localhost:5000/jobs'),
+        loader: () => fetch(`http://localhost:5000/jobs`),
         HydrateFallback: Loading,
         element: <PrivateRoute>
-          <Card></Card>
+          <JobsPage></JobsPage>
         </PrivateRoute>,
-        // Component: Card
+      },
+      {
+        path: "jobDetails/:id",
+        loader: ({ params }) => fetch(`http://localhost:5000/jobs/${params}`),
+        HydrateFallback: Loading,
+        element: <PrivateRoute>
+          <JobDetails></JobDetails>
+        </PrivateRoute>,
       },
       {
         path: "about",
@@ -38,6 +49,13 @@ const router = createBrowserRouter([
       },
     ],
   },
+
+  {
+    path: "/category",
+    Component: CategoryLayout,
+    errorElement: <Error></Error>,
+  },
+
   {
     path: "/auth",
     Component: AuthLayout,

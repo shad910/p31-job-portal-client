@@ -1,8 +1,9 @@
-import React from 'react';
-import { FaClock, FaLock, FaMapMarkerAlt } from 'react-icons/fa';
+import { FaMapMarkerAlt, FaLock, FaClock } from "react-icons/fa";
+import { Link } from "react-router";
 
-const Hot_Jobs = ({ job }) => {
-  const { company_logo, company, location, title, jobType, description, requirements, salaryRange, status } = job;
+const JobCards = ({ job }) => {
+
+  const { _id, company_logo, company, location, title, jobType, description, requirements, salaryRange } = job;
 
   return (
     <div
@@ -28,10 +29,10 @@ const Hot_Jobs = ({ job }) => {
       <h4 className="text-lg font-semibold mb-1">{title}</h4>
       <div className="flex items-center gap-3 text-sm opacity-80 mb-3">
         <div className="flex items-center">
-          <FaLock className="mr-1 opacity-60" /> {jobType}
+          <FaLock className="mr-1 text-gray-400 dark:text-gray-500" /> {jobType}
         </div>
         <div className="flex items-center">
-          <FaClock className="mr-1 opacity-60" /> {status}
+          <FaClock className="mr-1 text-gray-400 dark:text-gray-500" /> {status}
         </div>
       </div>
 
@@ -56,13 +57,10 @@ const Hot_Jobs = ({ job }) => {
       <div className="flex justify-between items-center flex-1">
         <span className="text-blue-500 font-bold">BDT {salaryRange.max}</span>
         <span className="text-xs opacity-70">/Hour</span>
-        <button className="btn btn-primary btn-sm ml-auto">Apply Now</button>
+        <Link to={`/jobDetails/${_id}`} className="btn btn-primary btn-sm ml-auto">Apply Now</Link>
       </div>
     </div>
-
-
-
   );
 };
 
-export default Hot_Jobs;
+export default JobCards;
