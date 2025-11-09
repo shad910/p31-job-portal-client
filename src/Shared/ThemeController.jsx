@@ -32,7 +32,7 @@ const ThemeController = () => {
       <input
         type="checkbox"
         onChange={handleToggle}
-        checked={theme === 'sunset'}
+        checked={theme === 'dark'}
       />
 
       <svg

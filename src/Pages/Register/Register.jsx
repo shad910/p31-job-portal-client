@@ -159,7 +159,7 @@ const Register = () => {
                 <div className="max-w-md w-full p-8 space-y-6  rounded-2xl ">
                     <div className="text-center">
                         <p className="text-sm text-blue-600 font-medium">Register</p>
-                        <h2 className="text-3xl font-extrabold text-gray-900">Start for free Today</h2>
+                        <h2 className="text-3xl font-extrabold ">Start for free Today</h2>
                         <p className="mt-1 text-sm text-gray-500">Access to all features. No credit card required.</p>
                     </div>
 

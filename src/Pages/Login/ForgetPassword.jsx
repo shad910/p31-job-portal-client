@@ -29,17 +29,17 @@ const ForgetPassword = () => {
     }
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
-            <div className="max-w-md w-full p-8 space-y-6 bg-white rounded-2xl shadow-md">
+        <div className="min-h-screen flex items-center justify-center  px-4">
+            <div className="max-w-md w-full p-8 space-y-6  rounded-2xl shadow-md">
                 <div className="text-center">
                     <p className="text-sm text-blue-600 font-medium">Forgot Password</p>
-                    <h2 className="text-3xl font-extrabold text-gray-900">Reset Your Password</h2>
-                    <p className="mt-1 text-sm text-gray-500">Enter your email to receive password reset instructions.</p>
+                    <h2 className="text-3xl font-extrabold ">Reset Your Password</h2>
+                    <p className="mt-1 text-xs text-base-400">Enter your email to receive password reset instructions.</p>
                 </div>
 
                 <form onSubmit={handleForgetPassword} className="space-y-4">
                     <div>
-                        <label className="block text-sm font-medium text-gray-700">Email Address *</label>
+                        <label className="block text-sm font-medium text-gray-700">Email Address <span className='text-red-500'>*</span></label>
                         <input
                             type="email"
                             placeholder="you@example.com"

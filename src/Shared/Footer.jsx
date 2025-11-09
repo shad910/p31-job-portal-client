@@ -19,9 +19,9 @@ const Footer = () => {
             <aside>
                 <h6 className="footer-title">Legal</h6>
                 <div className='flex flex-col text-sm'>
-                    <a className="link link-hover">Terms of use</a>
-                    <a className="link link-hover">Privacy policy</a>
-                    <a className="link link-hover">Cookie policy</a>
+                    <Link to="/auth/register/learn-more" className="link link-hover">Terms of use</Link>
+                    <Link to="/auth/register/learn-more" className="link link-hover">Privacy policy</Link>
+                    <Link to="/auth/register/learn-more" className="link link-hover">Cookie policy</Link>
                 </div>
             </aside>
             <aside>
