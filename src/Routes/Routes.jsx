@@ -13,6 +13,7 @@ import JobCards from "../Shared/JobCards";
 import JobDetails from "../Pages/JobDetails";
 import JobsPage from "../Pages/JobsPage";
 import CategoryLayout from "../Layouts/CategoryLayout";
+import AddJobs from "../Pages/AddJobs";
 // import CategoryHome from "../Pages/Category/CategoryHome";
 
 
@@ -37,11 +38,15 @@ const router = createBrowserRouter([
       },
       {
         path: "jobDetails/:id",
-        loader: ({ params }) => fetch(`http://localhost:5000/jobs/${params}`),
+        loader: ({ params }) => fetch(`http://localhost:5000/jobs/${params.id}`),
         HydrateFallback: Loading,
         element: <PrivateRoute>
           <JobDetails></JobDetails>
         </PrivateRoute>,
+      },
+      {
+        path: "add-jobs",
+        Component:AddJobs
       },
       {
         path: "about",

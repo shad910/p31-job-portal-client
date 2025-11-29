@@ -5,10 +5,6 @@ import JobCards from '../Shared/JobCards';
 const JobsPage = () => {
 
     const data = useLoaderData();
-    console.log(data);
-
-    data.map(job => { console.log(job) })
-
 
     return (
         <section>

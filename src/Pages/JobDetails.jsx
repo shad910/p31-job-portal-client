@@ -4,10 +4,8 @@ import { useLoaderData } from "react-router";
 
 const JobDetails = () => {
 
-    const {job} = useLoaderData();
-    console.log(job);
+    const jobDetails = useLoaderData();
     
-
     const {
         title,
         company,
@@ -21,7 +19,7 @@ const JobDetails = () => {
         requirements,
         preferred,
         company_logo,
-    } = job;
+    } = jobDetails;
 
     return (
         <section className="bg-base-100 text-base-content py-10 px-6 md:px-10 transition-colors duration-300">
