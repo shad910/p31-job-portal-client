@@ -91,7 +91,7 @@ const AddJobs = () => {
 
                         <div>
                             <legend className="label mb-1">Application Deadline</legend>
-                            <input type="date" className="input w-full" />
+                            <input name='applicationDeadline' type="date" className="input w-full" />
                         </div>
                     </section>
 
