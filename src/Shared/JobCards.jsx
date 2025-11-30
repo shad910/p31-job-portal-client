@@ -3,7 +3,7 @@ import { Link } from "react-router";
 
 const JobCards = ({ job }) => {
 
-  const { _id, company_logo, company, location, title, jobType, description, requirements, salaryRange } = job;
+  const { _id, company_logo, company, location, title, jobType, description, requirements, salaryRange, status } = job;
 
   return (
     <div
@@ -43,7 +43,7 @@ const JobCards = ({ job }) => {
 
       {/* Tags */}
       <div className="flex flex-wrap gap-2 mb-5">
-        {requirements.map((req, index) => (
+        {requirements?.map((req, index) => (
           <span
             key={index}
             className="badge badge-outline badge-sm border-base-300 text-base-content opacity-90"
@@ -57,7 +57,7 @@ const JobCards = ({ job }) => {
       <div className="flex justify-between items-center flex-1">
         <span className="text-blue-500 font-bold">BDT {salaryRange.max}</span>
         <span className="text-xs opacity-70">/Hour</span>
-        <Link to={`/jobDetails/${_id}`} className="btn btn-primary btn-sm ml-auto">Apply Now</Link>
+        <Link to={`/jobDetails/${_id}`} className="btn btn-primary btn-sm ml-auto">Details</Link>
       </div>
     </div>
   );

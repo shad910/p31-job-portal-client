@@ -78,7 +78,7 @@ const JobDetails = () => {
 
                         <h4 className="font-semibold mt-4 mb-2">Essential Knowledge, Skills, and Experience</h4>
                         <ul className="list-disc list-inside text-sm opacity-80 space-y-1">
-                            {requirements.map((req, i) => <li key={i}>{req}</li>)}
+                            {requirements?.map((req, i) => <li key={i}>{req}</li>)}
                         </ul>
 
                         {preferred && (
@@ -129,11 +129,11 @@ const JobDetails = () => {
                 </div>
             </div>
 
-            {/* Footer Buttons */}
+            {/* Footer Buttons
             <div className="mt-10 flex justify-center gap-3">
                 <button className="btn btn-primary">Apply Now</button>
                 <button className="btn btn-outline">Save Job</button>
-            </div>
+            </div> */}
         </section>
     );
 };

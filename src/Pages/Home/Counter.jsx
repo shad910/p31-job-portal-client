@@ -9,7 +9,7 @@ const Counter = () => {
         {/* Completed Cases */}
         <div className="space-y-2">
           <h3 className="text-3xl font-extrabold text-primary">
-            <CountUp end={25} duration={3} />K+
+            <CountUp end={1000} duration={10} />K+
           </h3>
           <p className="text-lg font-semibold">Completed Cases</p>
           <p className="text-sm opacity-80">
@@ -20,7 +20,7 @@ const Counter = () => {
         {/* Our Office */}
         <div className="space-y-2">
           <h3 className="text-3xl font-extrabold text-primary">
-            <CountUp end={18} duration={3} />+
+            <CountUp end={100} duration={10} />+
           </h3>
           <p className="text-lg font-semibold">Our Office</p>
           <p className="text-sm opacity-80">
@@ -31,7 +31,7 @@ const Counter = () => {
         {/* Skilled People */}
         <div className="space-y-2">
           <h3 className="text-3xl font-extrabold text-primary">
-            <CountUp end={86} duration={3} />+
+            <CountUp end={5000} duration={10} />+
           </h3>
           <p className="text-lg font-semibold">Skilled People</p>
           <p className="text-sm opacity-80">
@@ -42,7 +42,7 @@ const Counter = () => {
         {/* Happy Clients */}
         <div className="space-y-2">
           <h3 className="text-3xl font-extrabold text-primary">
-            <CountUp end={28} duration={3} />+
+            <CountUp end={50000} duration={10} />+
           </h3>
           <p className="text-lg font-semibold">Happy Clients</p>
           <p className="text-sm opacity-80">

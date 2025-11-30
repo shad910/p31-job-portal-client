@@ -14,6 +14,8 @@ import JobDetails from "../Pages/JobDetails";
 import JobsPage from "../Pages/JobsPage";
 import CategoryLayout from "../Layouts/CategoryLayout";
 import AddJobs from "../Pages/AddJobs";
+import MyPostedJobs from "../Pages/MyPostedJobs";
+import MyApplication from "../Pages/MyApplication";
 // import CategoryHome from "../Pages/Category/CategoryHome";
 
 
@@ -46,7 +48,25 @@ const router = createBrowserRouter([
       },
       {
         path: "add-jobs",
-        Component:AddJobs
+        element: <PrivateRoute>
+          <AddJobs></AddJobs>
+        </PrivateRoute>
+      },
+      {
+        path: "my-posted-jobs",
+        loader: () => fetch(`http://localhost:5000/jobs`),
+        HydrateFallback: Loading,
+        element: <PrivateRoute>
+          <MyPostedJobs></MyPostedJobs>
+        </PrivateRoute>
+      },
+      {
+        path: "/my-application",
+        loader: () => fetch(`http://localhost:5000/jobs`),
+        HydrateFallback: Loading,
+        element: <PrivateRoute>
+          <MyApplication></MyApplication>
+        </PrivateRoute>
       },
       {
         path: "about",

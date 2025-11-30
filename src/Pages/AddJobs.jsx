@@ -1,5 +1,7 @@
 import React, { use } from 'react';
 import AuthContext from '../Contexts/AuthContext';
+import axios from 'axios';
+import { Bounce, toast, ToastContainer } from 'react-toastify';
 
 const AddJobs = () => {
 
@@ -18,22 +20,60 @@ const AddJobs = () => {
             min, max, currency
         }
 
-        // Process requirement into arrays
-        const requirement = newJobData.requirement.split(',').map(item => item.trim());
-        newJobData.requirement = requirement;
+        // process requirements
+        const requirementsString = newJobData.requirements;
+        const requirementsDirty = requirementsString.split(',');
+        const requirementsClean = requirementsDirty.map(req => req.trim());
+        newJobData.requirements = requirementsClean;
 
-        // Process responsibilities into arrays
-        const responsibilities = newJobData.responsibilities.split(',').map(item => item.trim());
-        newJobData.responsibilities = responsibilities;
 
-        console.log(newJobData);
+        // process responsibilities
+        newJobData.responsibilities = newJobData.responsibilities.split(',').map(res => res.trim())
+
+        newJobData.status = "active";
+
+        axios.post('http://localhost:5000/jobs', newJobData)
+            .then(response => {
+                if (response.data.result.insertedId) {
+
+                    toast('🦄 Job added successfully!', {
+                        position: "top-right",
+                        autoClose: 5000,
+                        hideProgressBar: false,
+                        closeOnClick: false,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "light",
+                        transition: Bounce,
+                    });
+
+                    form.reset();
+                } else {
+                    toast.warn('Error', {
+                        position: "top-right",
+                        autoClose: 5000,
+                        hideProgressBar: false,
+                        closeOnClick: false,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "light",
+                        transition: Bounce,
+                    });
+                }
+            })
+            .catch(error => {
+                console.error('Error adding job:', error);
+            });
+
     }
 
     return (
         <section className="card bg-base-100 w-full shrink-0  mb-20">
             <div className="card-body">
                 <form onSubmit={handleAddJob} className="fieldset">
-                    <legend className='text-center text-2xl font-bold my-4'>Add new jobs</legend>
+                    <legend className='poppins text-center text-2xl font-bold my-4'>Add new jobs</legend>
 
                     {/* Job title */}
                     <div>
@@ -74,7 +114,7 @@ const AddJobs = () => {
                         {/* Job Category */}
                         <div>
                             <legend className="label mb-1">Job Category</legend>
-                            <select defaultValue="Job Category" className="select w-full">
+                            <select name="category" defaultValue="Job Category" className="select w-full">
                                 <option disabled={true}>Job Category</option>
                                 <option value="Teaching">Teaching</option>
                                 <option value="Data">Data</option>
@@ -89,6 +129,7 @@ const AddJobs = () => {
                             </select>
                         </div>
 
+                        {/* Job Deadline */}
                         <div>
                             <legend className="label mb-1">Application Deadline</legend>
                             <input name='applicationDeadline' type="date" className="input w-full" />
@@ -128,7 +169,7 @@ const AddJobs = () => {
                     {/* Job Requirement */}
                     <div>
                         <legend>Job Requirement</legend>
-                        <textarea name='requirement' className="textarea w-full my-2.5" placeholder="Requirement (Separated by comma)"></textarea>
+                        <textarea name='requirements' className="textarea w-full my-2.5" placeholder="Requirement (Separated by comma)"></textarea>
                     </div>
 
                     {/* Job Responsibilities */}
@@ -151,9 +192,22 @@ const AddJobs = () => {
                         </div>
                     </section>
 
-                    <button type='submit' className="btn btn-neutral mt-4">Login</button>
+                    <button type='submit' className="btn btn-neutral mt-4">Add Job</button>
                 </form>
             </div>
+            <ToastContainer
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick={false}
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+                transition={Bounce}
+            />
         </section>
     );
 };
