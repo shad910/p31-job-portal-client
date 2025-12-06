@@ -2,6 +2,8 @@ import React, { use, useEffect, useState } from 'react';
 import { Link, useLoaderData } from 'react-router';
 import AuthContext from '../Contexts/AuthContext';
 import axios from 'axios';
+import Lottie from 'lottie-react';
+import NoDataFound from "../assets/lottieFiles/NoDataFound.json";
 
 const MyPostedJobs = () => {
 
@@ -30,8 +32,14 @@ const MyPostedJobs = () => {
 
     if (postedJobs.length === 0) {
         return (
-            <section>
-                <h2 className='text-3xl font-bold text-center my-20'>You have not posted any jobs yet.</h2>
+            <section className='my-14 space-y-5'>
+                <div className='flex justify-center'>
+                    <Lottie style={{ width: '300px' }} animationData={NoDataFound} loop={true} />
+                </div>
+                <h2 className='text-3xl font-bold text-center'>You have not posted any jobs yet.</h2>
+                <div className='flex justify-center'>
+                    <Link to="/add-jobs" className='btn btn-primary btn-outline'>Add a new job</Link>
+                </div>
             </section>
         )
     } else {
