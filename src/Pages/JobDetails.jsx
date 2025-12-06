@@ -17,7 +17,7 @@ const JobDetails = () => {
         experience,
         description,
         requirements,
-        preferred,
+        responsibilities,
         company_logo,
     } = jobDetails;
 
@@ -81,11 +81,11 @@ const JobDetails = () => {
                             {requirements?.map((req, i) => <li key={i}>{req}</li>)}
                         </ul>
 
-                        {preferred && (
+                        {responsibilities && (
                             <>
-                                <h4 className="font-semibold mt-4 mb-2">Preferred Experience</h4>
+                                <h4 className="font-semibold mt-4 mb-2">Responsibilities</h4>
                                 <ul className="list-disc list-inside text-sm opacity-80 space-y-1">
-                                    {preferred.map((pref, i) => <li key={i}>{pref}</li>)}
+                                    {responsibilities.map((pref, i) => <li key={i}>{pref}</li>)}
                                 </ul>
                             </>
                         )}

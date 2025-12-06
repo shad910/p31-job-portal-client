@@ -27,7 +27,7 @@ const NavBar = () => {
     };
 
     return (
-        <nav className="md:w-11/12 mx-auto navbar  ">
+        <nav id='primary-nav' className="md:w-11/12 mx-auto navbar">
             <section className="navbar-start">
                 <Link to="/" className='flex items-center gap-0.5'>
                     <img className='w-6' src="https://i.ibb.co.com/KjYLPHzm/code.png" alt="logo" />

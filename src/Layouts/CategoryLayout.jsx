@@ -4,11 +4,11 @@ import Footer from '../Shared/Footer';
 
 const CategoryLayout = () => {
     return (
-        <div>
+        <div className='flex flex-col min-h-screen'>
             <header>
                 <NavBar></NavBar>
             </header>
-            <main>
+            <main className='flex-1'>
                 
             </main>
             <footer>
