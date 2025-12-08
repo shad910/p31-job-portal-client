@@ -3,6 +3,21 @@ import AuthContext from '../Contexts/AuthContext';
 import axios from 'axios';
 import { Bounce, toast, ToastContainer } from 'react-toastify';
 
+// 1. Define the Categories with their IDs
+const categories = [
+    { "categoryID": 0, "categoryName": "All" },
+    { "categoryID": 1, "categoryName": "Teaching" },
+    { "categoryID": 2, "categoryName": "Data" },
+    { "categoryID": 3, "categoryName": "Design" },
+    { "categoryID": 4, "categoryName": "Development" },
+    { "categoryID": 5, "categoryName": "Marketing" },
+    { "categoryID": 6, "categoryName": "Management" },
+    { "categoryID": 7, "categoryName": "Finance" },
+    { "categoryID": 8, "categoryName": "Engineering" },
+    { "categoryID": 9, "categoryName": "HR" },
+    { "categoryID": 10, "categoryName": "Support" }
+];
+
 const AddJobs = () => {
 
     const { user } = use(AuthContext);
@@ -14,8 +29,21 @@ const AddJobs = () => {
         const formData = new FormData(form);
         const data = Object.fromEntries(formData.entries());
 
-        // Process the salary range object
         const { min, max, currency, ...newJobData } = data;
+        
+        // --------------------------------------------------------
+        // START: Logic to Auto-Assign Category ID
+        // --------------------------------------------------------
+        const selectedCategory = categories.find(cat => cat.categoryName === newJobData.category);
+        if (selectedCategory) {
+            newJobData.categoryID = selectedCategory.categoryID;
+        } else {
+            newJobData.categoryID = 0; // Default fallback
+        }
+        // --------------------------------------------------------
+        // END: Logic
+        // --------------------------------------------------------
+
         newJobData.salaryRange = {
             min, max, currency
         }
@@ -111,21 +139,18 @@ const AddJobs = () => {
                             </div>
                         </div>
 
-                        {/* Job Category */}
+                        {/* Job Category - UPDATED TO USE MAP */}
                         <div>
                             <legend className="label mb-1">Job Category</legend>
                             <select name="category" defaultValue="Job Category" className="select w-full">
                                 <option disabled={true}>Job Category</option>
-                                <option value="Teaching">Teaching</option>
-                                <option value="Data">Data</option>
-                                <option value="Design">Design</option>
-                                <option value="Development">Development</option>
-                                <option value="Marketing">Marketing</option>
-                                <option value="Management">Management</option>
-                                <option value="Finance">Finance</option>
-                                <option value="Engineering">Engineering</option>
-                                <option value="HR">HR</option>
-                                <option value="Support">Support</option>
+                                {categories.map((cat) => (
+                                    cat.categoryName !== "All" && (
+                                        <option key={cat.categoryID} value={cat.categoryName}>
+                                            {cat.categoryName}
+                                        </option>
+                                    )
+                                ))}
                             </select>
                         </div>
 

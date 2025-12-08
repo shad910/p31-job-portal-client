@@ -1,6 +1,7 @@
 @import "tailwindcss";
 @plugin "daisyui";
 
-#primary-nav a.active {
-    @apply border-2 border-blue-400 
+a.active {
+    @apply font-medium bg-blue-400
 }
+

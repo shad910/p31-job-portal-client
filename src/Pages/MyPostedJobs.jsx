@@ -8,7 +8,7 @@ import NoDataFound from "../assets/lottieFiles/NoDataFound.json";
 const MyPostedJobs = () => {
 
     const { user } = use(AuthContext);
-    const data = useLoaderData();
+    const { data } = useLoaderData();
     const [postedJobs, setPostedJobs] = useState([])
 
     const handleDeleteJob = async (id) => {

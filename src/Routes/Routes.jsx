@@ -1,4 +1,5 @@
 import { createBrowserRouter } from "react-router";
+import axios from "axios";
 import HomeLayout from "../Layouts/HomeLayout";
 import Home from "../Pages/Home/Home";
 import Error from "../Pages/Error";
@@ -9,15 +10,15 @@ import ForgetPassword from "../Pages/Login/ForgetPassword";
 import LearnMore from "../Pages/Register/LearnMore";
 import Loading from "../Shared/Loading";
 import PrivateRoute from "../Provider/PrivateRoute";
-import JobCards from "../Shared/JobCards";
 import JobDetails from "../Pages/JobDetails";
-import JobsPage from "../Pages/JobsPage";
 import CategoryLayout from "../Layouts/CategoryLayout";
 import AddJobs from "../Pages/AddJobs";
 import MyPostedJobs from "../Pages/MyPostedJobs";
 import MyApplication from "../Pages/MyApplication";
 import UpdateJobDetails from "../Pages/UpdateJobDetails";
-// import CategoryHome from "../Pages/Category/CategoryHome";
+import Category from "../Pages/Category/Categorys";
+import CategoryJobs from "../Pages/Category/CategoryJobs";
+
 
 
 const router = createBrowserRouter([
@@ -32,16 +33,8 @@ const router = createBrowserRouter([
         Component: Home,
       },
       {
-        path: "jobs",
-        loader: () => fetch(`http://localhost:5000/jobs`),
-        HydrateFallback: Loading,
-        element: <PrivateRoute>
-          <JobsPage></JobsPage>
-        </PrivateRoute>,
-      },
-      {
         path: "jobDetails/:id",
-        loader: ({ params }) => fetch(`http://localhost:5000/jobs/${params.id}`),
+        loader: ({ params }) => fetch(`${import.meta.env.VITE_API_URL}/jobs/${params.id}`),
         HydrateFallback: Loading,
         element: <PrivateRoute>
           <JobDetails></JobDetails>
@@ -54,8 +47,8 @@ const router = createBrowserRouter([
         </PrivateRoute>
       },
       {
-        path:"update-job/:id",
-        loader: ({ params }) => fetch(`http://localhost:5000/jobs/${params.id}`),
+        path: "update-job/:id",
+        loader: ({ params }) => axios(`${import.meta.env.VITE_API_URL}/jobs/${params.id}`),
         HydrateFallback: Loading,
         element: <PrivateRoute>
           <UpdateJobDetails></UpdateJobDetails>
@@ -63,7 +56,7 @@ const router = createBrowserRouter([
       },
       {
         path: "my-posted-jobs",
-        loader: () => fetch(`http://localhost:5000/jobs`),
+        loader: () => axios(`${import.meta.env.VITE_API_URL}/jobs`),
         HydrateFallback: Loading,
         element: <PrivateRoute>
           <MyPostedJobs></MyPostedJobs>
@@ -71,7 +64,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/my-application",
-        loader: () => fetch(`http://localhost:5000/jobs`),
+        loader: () => axios(`${import.meta.env.VITE_API_URL}/jobs`),
         HydrateFallback: Loading,
         element: <PrivateRoute>
           <MyApplication></MyApplication>
@@ -88,6 +81,20 @@ const router = createBrowserRouter([
     path: "/category",
     Component: CategoryLayout,
     errorElement: <Error></Error>,
+    children: [
+      {
+        path: "",
+        element: <PrivateRoute>
+          <Category></Category>
+        </PrivateRoute>
+      },
+      {
+        path: ":id",
+        loader: () => axios(`${import.meta.env.VITE_API_URL}/jobs`),
+        HydrateFallback: Loading,
+        Component: CategoryJobs
+      },
+    ]
   },
 
   {

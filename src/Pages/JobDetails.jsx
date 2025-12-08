@@ -5,6 +5,8 @@ import { useLoaderData } from "react-router";
 const JobDetails = () => {
 
     const jobDetails = useLoaderData();
+    console.log(jobDetails);
+    
     
     const {
         title,
@@ -54,7 +56,7 @@ const JobDetails = () => {
                             </div>
                             <div className="flex items-center gap-2">
                                 <FaDollarSign className="text-primary" />
-                                <span>BDT {salaryRange.min} - {salaryRange.max}</span>
+                                <span>BDT {salaryRange?.min} - {salaryRange?.max}</span>
                             </div>
                             <div className="flex items-center gap-2">
                                 <FaCalendarAlt className="text-primary" />

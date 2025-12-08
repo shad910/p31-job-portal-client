@@ -11,7 +11,7 @@ const NavBar = () => {
 
     const links = <>
         <li><NavLink to="/">Home</NavLink></li>
-        <li><NavLink to="/jobs">Jobs</NavLink></li>
+        <li><NavLink to="/category">Category Jobs</NavLink></li>
         <li><NavLink to="/add-jobs">Add New Jobs</NavLink></li>
         {
             user ? <li><NavLink to="/my-posted-jobs">My Posted Jobs</NavLink></li> : ""
@@ -39,7 +39,7 @@ const NavBar = () => {
             </section>
 
             <section className="navbar-center hidden lg:flex">
-                <ul className="menu menu-horizontal rounded-none gap-2.5 px-1">
+                <ul className="menu menu-horizontal rounded-none gap-2.5 px-1 font-medium">
                     {links}
                 </ul>
             </section>

@@ -5,8 +5,8 @@ import axios from 'axios';
 import { Bounce, toast, ToastContainer } from 'react-toastify';
 
 const UpdateJobDetails = () => {
-    // const { user } = use(AuthContext);
-    const data = useLoaderData()
+    
+    const {data} = useLoaderData()
     const id = data._id;
 
     const handleAddJob = async (e) => {
