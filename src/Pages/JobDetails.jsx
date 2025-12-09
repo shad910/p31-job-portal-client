@@ -1,14 +1,13 @@
 import React from "react";
 import { FaMapMarkerAlt, FaClock, FaBriefcase, FaDollarSign, FaCalendarAlt } from "react-icons/fa";
-import { useLoaderData } from "react-router";
+import { Link, useLoaderData } from "react-router";
 
 const JobDetails = () => {
 
     const jobDetails = useLoaderData();
-    console.log(jobDetails);
-    
-    
+
     const {
+        _id,
         title,
         company,
         location,
@@ -38,7 +37,7 @@ const JobDetails = () => {
                                     <FaMapMarkerAlt /> {location}
                                 </p>
                             </div>
-                            <button className="btn btn-primary btn-sm mt-4 md:mt-0">Apply Now</button>
+                            <Link to={`/job-apply/${_id}`} className="btn btn-primary btn-sm mt-4 md:mt-0">Apply Now</Link>
                         </div>
                     </div>
 

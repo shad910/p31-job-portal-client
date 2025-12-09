@@ -14,10 +14,11 @@ import JobDetails from "../Pages/JobDetails";
 import CategoryLayout from "../Layouts/CategoryLayout";
 import AddJobs from "../Pages/AddJobs";
 import MyPostedJobs from "../Pages/MyPostedJobs";
-import MyApplication from "../Pages/MyApplication";
+import MyApplication from "../Pages/MyApplication/MyApplication";
 import UpdateJobDetails from "../Pages/UpdateJobDetails";
 import Category from "../Pages/Category/Categorys";
 import CategoryJobs from "../Pages/Category/CategoryJobs";
+import JobApply from "../Pages/JobApply";
 
 
 
@@ -63,12 +64,16 @@ const router = createBrowserRouter([
         </PrivateRoute>
       },
       {
-        path: "/my-application",
-        loader: () => axios(`${import.meta.env.VITE_API_URL}/jobs`),
-        HydrateFallback: Loading,
+        path: "my-application",
         element: <PrivateRoute>
           <MyApplication></MyApplication>
         </PrivateRoute>
+      },
+      {
+        path: "job-apply/:id",
+        loader: ({ params }) => axios(`${import.meta.env.VITE_API_URL}/jobs/${params.id}`),
+        HydrateFallback: Loading,
+        Component: JobApply
       },
       {
         path: "about",

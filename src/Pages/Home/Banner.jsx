@@ -3,8 +3,6 @@ import { motion } from "motion/react"
 import team1 from '../../assets/team/team1.png';
 import team2 from '../../assets/team/team2.png';
 import { Link } from 'react-router';
-import { NavLink } from 'react-router';
-
 
 const Banner = () => {
     return (
@@ -28,8 +26,8 @@ const Banner = () => {
                         </p>
 
                         <div className="mt-8 flex  gap-4 flex-wrap">
-                            <NavLink to="/jobs" className="btn  btn-primary px-6">Get Started</NavLink>
-                            <button className="btn btn-outline px-6">Learn more</button>
+                            <Link to="/category/0" className="btn  btn-primary px-6">Get Started</Link>
+                            <Link to="/auth/register/learn-more" className="btn btn-outline px-6">Learn more</Link>
                         </div>
 
                         <div className="mt-12 text-left">

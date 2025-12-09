@@ -12,7 +12,7 @@ const Jobs = ({ job_promise }) => {
                 <h2 className='poppins text-5xl font-bold'>Jobs of the day</h2>
                 <p className='text-lg font-medium'>Search, explore and connect with the right candidates faster.</p>
             </div>
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 justify-self-center mx-auto my-16 gap-2 lg:gap-5'>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 justify-self-center mx-auto my-16 gap-2 lg:gap-5'>
                 {jobs_post.map(job => <JobCards key={job._id} job={job}></JobCards>).slice(0, 8)}
             </div>
         </section>

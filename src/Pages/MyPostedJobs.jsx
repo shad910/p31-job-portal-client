@@ -9,7 +9,7 @@ const MyPostedJobs = () => {
 
     const { user } = use(AuthContext);
     const { data } = useLoaderData();
-    const [postedJobs, setPostedJobs] = useState([])
+    const [postedJobs, setPostedJobs] = useState([]);
 
     const handleDeleteJob = async (id) => {
         try {
@@ -44,31 +44,57 @@ const MyPostedJobs = () => {
         )
     } else {
         return (
-            <section className='mx-10 my-10'>
+            <section className='my-5 lg:my-10 space-y-6'>
+                <h1 className='poppins text-center text-3xl font-bold'>My Posted Jobs</h1>
                 <div className="overflow-x-auto">
-                    <table className="table">
+                    <table className="table w-10/12 mx-auto">
                         <thead>
                             <tr>
-                                <th></th>
-                                <th>Title</th>
-                                <th>Job Type</th>
-                                <th>Company</th>
-                                <th>Location</th>
+                                <th>#</th>
+                                <th>Company Information</th>
+                                <th>Job Information</th>
+                                <th>Salary Range</th>
                                 <th>actions</th>
                             </tr>
                         </thead>
                         <tbody>
                             {postedJobs.map((job, index) =>
                                 <tr key={index}>
-                                    <th>{index + 1}</th>
-                                    <td>{job.title}</td>
-                                    <td>{job.jobType}</td>
-                                    <td>{job.company}</td>
-                                    <td>{job.location}</td>
+                                    <th>
+                                        <label>
+                                            {index + 1}
+                                        </label>
+                                    </th>
+                                    <td>
+                                        <div className="flex items-center gap-3">
+                                            <div className="avatar">
+                                                <div className="mask mask-squircle h-12 w-12">
+                                                    <img
+                                                        src={job?.company_logo}
+                                                        alt={job?.company} />
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <div className="font-bold">{job?.company}</div>
+                                                <div className="text-sm opacity-50">{job.location}</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        {job?.title}
+                                        <br />
+                                        <span className="badge badge-ghost badge-sm">{job?.jobType}</span>
+                                    </td>
+                                    <td className='font-medium'>
+                                        <span>Min: {job?.salaryRange?.min} {job?.salaryRange?.currency?.toUpperCase()}</span>
+                                        <br />
+                                        <span>Max: {job?.salaryRange?.max} {job?.salaryRange?.currency?.toUpperCase()}</span>
+                                    </td>
                                     <td>
                                         <Link to={`/jobDetails/${job._id}`} className='btn btn-xs btn-primary mr-2'>Details</Link>
                                         <Link to={`/update-job/${job._id}`} className='btn btn-xs btn-success mr-2'>Edit</Link>
                                         <button onClick={() => handleDeleteJob(job._id)} className='btn btn-xs btn-error'>Delete</button>
+
                                     </td>
                                 </tr>)}
 

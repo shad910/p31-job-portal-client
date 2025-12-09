@@ -30,7 +30,7 @@ const AddJobs = () => {
         const data = Object.fromEntries(formData.entries());
 
         const { min, max, currency, ...newJobData } = data;
-        
+
         // --------------------------------------------------------
         // START: Logic to Auto-Assign Category ID
         // --------------------------------------------------------
@@ -60,7 +60,7 @@ const AddJobs = () => {
 
         newJobData.status = "active";
 
-        axios.post('http://localhost:5000/jobs', newJobData)
+        axios.post(`${import.meta.env.VITE_API_URL}/jobs`, newJobData)
             .then(response => {
                 if (response.data.result.insertedId) {
 
@@ -101,7 +101,7 @@ const AddJobs = () => {
         <section className="card bg-base-100 w-full shrink-0  mb-20">
             <div className="card-body">
                 <form onSubmit={handleAddJob} className="fieldset">
-                    <legend className='poppins text-center text-2xl font-bold my-4'>Add new jobs</legend>
+                    <legend className='poppins text-center text-3xl font-bold my-4'>Add new jobs</legend>
 
                     {/* Job title */}
                     <div>
@@ -220,6 +220,7 @@ const AddJobs = () => {
                     <button type='submit' className="btn btn-neutral mt-4">Add Job</button>
                 </form>
             </div>
+
             <ToastContainer
                 position="top-right"
                 autoClose={5000}

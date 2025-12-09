@@ -60,7 +60,7 @@ const Login = () => {
         googleLogin().then((result) => {
             const user = result.user;
             setUser(user);
-            navigate("/")
+            navigate(`${location.state ? location.state : "/"}`);
         }).catch((error) => {
             const errorMessage = error.message;
             setErrorMessage(errorMessage)
@@ -82,7 +82,7 @@ const Login = () => {
         githubLogin().then((result) => {
             const user = result.user;
             setUser(user);
-            navigate("/")
+            navigate(`${location.state ? location.state : "/"}`);
         }).catch((error) => {
             const errorMessage = error.message;
             setErrorMessage(errorMessage)

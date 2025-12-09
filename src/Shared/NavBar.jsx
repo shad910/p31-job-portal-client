@@ -12,12 +12,12 @@ const NavBar = () => {
     const links = <>
         <li><NavLink to="/">Home</NavLink></li>
         <li><NavLink to="/category">Category Jobs</NavLink></li>
-        <li><NavLink to="/add-jobs">Add New Jobs</NavLink></li>
         {
-            user ? <li><NavLink to="/my-posted-jobs">My Posted Jobs</NavLink></li> : ""
-        }
-        {
-            user ? <li><NavLink to="/my-application">My Application</NavLink></li> : ""
+            user ? <>
+                <li><NavLink to="/add-jobs">Add New Jobs</NavLink></li>
+                <li><NavLink to="/my-posted-jobs">My Posted Jobs</NavLink></li>
+                <li><NavLink to="/my-application">My Application</NavLink></li>
+            </> : ""
         }
     </>
 
@@ -31,7 +31,7 @@ const NavBar = () => {
             <section className="navbar-start">
                 <Link to="/" className='flex items-center gap-0.5'>
                     <img className='w-6' src="https://i.ibb.co.com/KjYLPHzm/code.png" alt="logo" />
-                    <span className="text-xl font-bold">
+                    <span className="text-lg lg:text-xl font-bold">
                         <span className='text-blue-400'>
                             CAREER-</span>CODE
                     </span>
