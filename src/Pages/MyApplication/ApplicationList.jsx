@@ -4,25 +4,50 @@ import NoDataFound from "../../assets/lottieFiles/NoDataFound.json";
 import ApplicationRow from './ApplicationRow';
 import axios from 'axios';
 import { Link } from 'react-router';
+import { Bounce, toast } from 'react-toastify';
 
 const ApplicationList = ({ myApplicationPromise }) => {
 
-    const data = use(myApplicationPromise);
-    const initialApplications = data?.data || [];
+    const jobData = use(myApplicationPromise);
+    const initialApplications = jobData?.data || [];
     const [applications, setApplications] = useState(initialApplications);
 
     const handleDelete = async (id) => {
         try {
-            const { data } = await axios.delete(
+            const response = await axios.delete(
                 `${import.meta.env.VITE_API_URL}/applications/${id}`
             );
 
-            if (data.success) {
+            if (response.data.deletedCount > 0) {
+                toast.warn('Application deleted successfully', {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: false,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                    transition: Bounce,
+                });
                 setApplications(prev => prev.filter(app => app._id !== id));
+            } else {
+                toast.error('Delete failed', {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: false,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                    transition: Bounce,
+                });
             }
 
         } catch (error) {
             console.error("Delete failed:", error);
+
         }
     };
 
@@ -63,6 +88,7 @@ const ApplicationList = ({ myApplicationPromise }) => {
 
                     </table>
                 </div>
+
             </section>
         );
     }

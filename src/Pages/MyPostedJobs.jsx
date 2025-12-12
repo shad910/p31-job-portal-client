@@ -4,6 +4,7 @@ import AuthContext from '../Contexts/AuthContext';
 import axios from 'axios';
 import Lottie from 'lottie-react';
 import NoDataFound from "../assets/lottieFiles/NoDataFound.json";
+import { Bounce, toast, ToastContainer } from 'react-toastify';
 
 const MyPostedJobs = () => {
 
@@ -14,8 +15,34 @@ const MyPostedJobs = () => {
     const handleDeleteJob = async (id) => {
         try {
             const response = await axios.delete(`http://localhost:5000/job/${id}`);
-            console.log('Delete successful:', response.data);
-            setPostedJobs(prevJobs => prevJobs.filter(job => job._id !== id));
+            console.log(response.data.deletedCount);
+
+            if (response.data.deletedCount > 0) {
+                toast.warn('Job deleted successfully', {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: false,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                    transition: Bounce,
+                });
+                setPostedJobs(prevJobs => prevJobs.filter(job => job._id !== id));
+            } else {
+                toast.error(`Delete failed`, {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: false,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                    transition: Bounce,
+                });
+            }
         } catch (error) {
             console.error('Error deleting item:', error.response?.data || error.message);
         }
@@ -102,6 +129,20 @@ const MyPostedJobs = () => {
 
                     </table>
                 </div>
+
+                <ToastContainer
+                    position="top-right"
+                    autoClose={5000}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick={false}
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
+                    theme="light"
+                    transition={Bounce}
+                />
             </section>
         )
     }

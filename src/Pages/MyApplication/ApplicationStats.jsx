@@ -13,7 +13,7 @@ const ApplicationStats = () => {
         {/* Avatar */}
         <div className="avatar">
           <div className="w-16 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-            <img src={user?.photoURL} alt={user?.displayName} />
+            <img src={user?.photoURL} alt={user?.displayName} data-reference="no-reference"/>
           </div>
         </div>
 

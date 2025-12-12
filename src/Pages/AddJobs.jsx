@@ -62,9 +62,9 @@ const AddJobs = () => {
 
         axios.post(`${import.meta.env.VITE_API_URL}/jobs`, newJobData)
             .then(response => {
-                if (response.data.result.insertedId) {
+                if (response.data.insertedId) {
 
-                    toast('🦄 Job added successfully!', {
+                    toast('Job added successfully!', {
                         position: "top-right",
                         autoClose: 5000,
                         hideProgressBar: false,
@@ -78,7 +78,7 @@ const AddJobs = () => {
 
                     form.reset();
                 } else {
-                    toast.warn('Error', {
+                    toast.error('Error', {
                         position: "top-right",
                         autoClose: 5000,
                         hideProgressBar: false,
@@ -106,25 +106,25 @@ const AddJobs = () => {
                     {/* Job title */}
                     <div>
                         <label className="label">Job Title</label>
-                        <input name='title' type="text" className="input w-full" placeholder="Type the job title" />
+                        <input name='title' type="text" className="input w-full" placeholder="Type the job title" required />
                     </div>
 
                     {/* Company Name */}
                     <div>
                         <label className="label">Company Name</label>
-                        <input name='company' type="text" className="input w-full" placeholder="Type the Company Name" />
+                        <input name='company' type="text" className="input w-full" placeholder="Type the Company Name" required />
                     </div>
 
                     {/* Company Logo */}
                     <div>
                         <label className="label">Company Logo</label>
-                        <input name='company_logo' type="url" className="input w-full" placeholder="Paste the logo url" />
+                        <input name='company_logo' type="url" className="input w-full" placeholder="Paste the logo url" required />
                     </div>
 
                     {/* Company Location */}
                     <div>
                         <label className="label">Location</label>
-                        <input name='location' type="text" className="input w-full" placeholder="type the location" />
+                        <input name='location' type="text" className="input w-full" placeholder="type the location" required />
                     </div>
 
                     <section className='grid grid-cols-1 md:grid-cols-3 gap-2.5'>
@@ -132,7 +132,7 @@ const AddJobs = () => {
                         <div>
                             <legend className="label mb-1">Job Type</legend>
                             <div className="filter ">
-                                <input className="btn filter-reset" type="radio" name="jobType" aria-label="All" />
+                                <input className="btn filter-reset" type="radio" name="jobType" aria-label="All" required />
                                 <input className="btn" type="radio" name="jobType" aria-label="On-Site" value="On-Site" />
                                 <input className="btn" type="radio" name="jobType" aria-label="Remote" value="Remote" />
                                 <input className="btn" type="radio" name="jobType" aria-label="Hybrid" value="Hybrid" />
@@ -142,7 +142,7 @@ const AddJobs = () => {
                         {/* Job Category - UPDATED TO USE MAP */}
                         <div>
                             <legend className="label mb-1">Job Category</legend>
-                            <select name="category" defaultValue="Job Category" className="select w-full">
+                            <select name="category" defaultValue="Job Category" className="select w-full" required >
                                 <option disabled={true}>Job Category</option>
                                 {categories.map((cat) => (
                                     cat.categoryName !== "All" && (
@@ -157,7 +157,7 @@ const AddJobs = () => {
                         {/* Job Deadline */}
                         <div>
                             <legend className="label mb-1">Application Deadline</legend>
-                            <input name='applicationDeadline' type="date" className="input w-full" />
+                            <input name='applicationDeadline' type="date" className="input w-full" required />
                         </div>
                     </section>
 
@@ -166,18 +166,18 @@ const AddJobs = () => {
                         {/* Min Salary */}
                         <div>
                             <label className="label mb-1">Minimum Salary</label>
-                            <input name='min' type="number" className="input w-full" placeholder="type the Minimum Salary" />
+                            <input name='min' type="number" className="input w-full" placeholder="type the Minimum Salary" required />
                         </div>
                         {/* Max Salary */}
                         <div>
                             <label className="label mb-1">Maximum Salary</label>
-                            <input name='max' type="number" className="input w-full" placeholder="type the Maximum Salary" />
+                            <input name='max' type="number" className="input w-full" placeholder="type the Maximum Salary" required />
                         </div>
                         {/* Currency */}
                         <div>
                             <legend className="label mb-1">Currency</legend>
-                            <select name='currency' defaultValue="Select Currency" className="select w-full">
-                                <option disabled={true}>Select Currency</option>
+                            <select name="currency" className="select w-full" required>
+                                <option value="" disabled>Select Currency</option>
                                 <option value="BDT">BDT</option>
                                 <option value="INR">INR</option>
                                 <option value="Dollar">Dollar</option>
@@ -188,19 +188,19 @@ const AddJobs = () => {
                     {/* Job Description */}
                     <div>
                         <legend>Job Description</legend>
-                        <textarea name='description' className="textarea w-full my-2.5" placeholder="Job Description"></textarea>
+                        <textarea name='description' className="textarea w-full my-2.5" placeholder="Job Description" required></textarea>
                     </div>
 
                     {/* Job Requirement */}
                     <div>
                         <legend>Job Requirement</legend>
-                        <textarea name='requirements' className="textarea w-full my-2.5" placeholder="Requirement (Separated by comma)"></textarea>
+                        <textarea name='requirements' className="textarea w-full my-2.5" placeholder="Requirement (Separated by comma)" required></textarea>
                     </div>
 
                     {/* Job Responsibilities */}
                     <div>
                         <legend>Job Responsibilities</legend>
-                        <textarea name='responsibilities' className="textarea w-full my-2.5" placeholder="Responsibilities (Separated by comma)"></textarea>
+                        <textarea name='responsibilities' className="textarea w-full my-2.5" placeholder="Responsibilities (Separated by comma)" required></textarea>
                     </div>
 
                     <section className='grid grid-cols-1 md:grid-cols-2 gap-2.5'>

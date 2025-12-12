@@ -28,7 +28,9 @@ const JobApply = () => {
 
         axios.post(`${import.meta.env.VITE_API_URL}/applications`, application)
             .then(response => {
-                if (response.data.result.insertedId) {
+                console.log();
+                
+                if (response.data.insertedId) {
 
                     toast('🦄 Job added successfully!', {
                         position: "top-right",
@@ -84,22 +86,22 @@ const JobApply = () => {
                                 {/* Git-Hub Link */}
                                 <div>
                                     <label className="label">Git-Hub Link</label>
-                                    <input name='github' type="url" className="input" placeholder="Paste your Git-Hub link" />
+                                    <input name='github' type="url" className="input" placeholder="Paste your Git-Hub link" requiredJ/>
                                 </div>
                                 {/* LinkedIn Profile Link */}
                                 <div>
                                     <label className="label">LinkedIn Profile Link</label>
-                                    <input name='linkedIn' type="url" className="input" placeholder="Paste your LinkedIn Profile link" />
+                                    <input name='linkedIn' type="url" className="input" placeholder="Paste your LinkedIn Profile link" required/>
                                 </div>
                                 {/* Portfolio Link */}
                                 <div>
                                     <label className="label">Portfolio Link</label>
-                                    <input name='portfolio' type="url" className="input" placeholder="Paste your Portfolio link" />
+                                    <input name='portfolio' type="url" className="input" placeholder="Paste your Portfolio link" required/>
                                 </div>
                                 {/* Resume Link */}
                                 <div>
                                     <label className="label">Resume Link</label>
-                                    <input name='resume' type="url" className="input" placeholder="Paste your Resume link" />
+                                    <input name='resume' type="url" className="input" placeholder="Paste your Resume link" required/>
                                 </div>
 
                                 <button type='submit' className="btn btn-neutral mt-4">Submit Details</button>
