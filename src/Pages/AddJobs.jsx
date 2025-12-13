@@ -58,13 +58,13 @@ const AddJobs = () => {
         // process responsibilities
         newJobData.responsibilities = newJobData.responsibilities.split(',').map(res => res.trim())
 
-        newJobData.status = "active";
+        // newJobData.status = "Pending";
 
         axios.post(`${import.meta.env.VITE_API_URL}/jobs`, newJobData)
             .then(response => {
                 if (response.data.insertedId) {
 
-                    toast('Job added successfully!', {
+                    toast.success('Job added successfully!', {
                         position: "top-right",
                         autoClose: 5000,
                         hideProgressBar: false,
@@ -78,7 +78,7 @@ const AddJobs = () => {
 
                     form.reset();
                 } else {
-                    toast.error('Error', {
+                    toast.error('Error!', {
                         position: "top-right",
                         autoClose: 5000,
                         hideProgressBar: false,

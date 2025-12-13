@@ -19,6 +19,8 @@ import UpdateJobDetails from "../Pages/UpdateJobDetails";
 import Category from "../Pages/Category/Categorys";
 import CategoryJobs from "../Pages/Category/CategoryJobs";
 import JobApply from "../Pages/JobApply";
+import ViewApplication from "../Pages/ViewApplication";
+import UpdateJobApply from "../Pages/UpdateJobApply/UpdateJobApply";
 
 
 
@@ -74,6 +76,23 @@ const router = createBrowserRouter([
         loader: ({ params }) => axios(`${import.meta.env.VITE_API_URL}/jobs/${params.id}`),
         HydrateFallback: Loading,
         Component: JobApply
+      },
+      // {
+      //   path: "update-application/:id",
+      //   loader: ({ params }) => axios(`${import.meta.env.VITE_API_URL}/applications/${params.id}`),
+      //   HydrateFallback: Loading,
+      //   element: <PrivateRoute>
+      //     <UpdateJobApply></UpdateJobApply>
+      //   </PrivateRoute>
+      // },
+      {
+        path: "applications/:id",
+        loader: ({ params }) => axios(`${import.meta.env.VITE_API_URL}/applications/job/${params.id}`),
+        HydrateFallback: Loading,
+        element: <PrivateRoute>
+          <ViewApplication></ViewApplication>
+        </PrivateRoute>
+
       },
       {
         path: "about",

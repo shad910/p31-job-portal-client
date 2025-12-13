@@ -12,6 +12,8 @@ const NavBar = () => {
     const links = <>
         <li><NavLink to="/">Home</NavLink></li>
         <li><NavLink to="/category">Category Jobs</NavLink></li>
+
+        {/* Applicant Links */}
         {
             user ? <>
                 <li><NavLink to="/add-jobs">Add New Jobs</NavLink></li>

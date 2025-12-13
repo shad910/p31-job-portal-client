@@ -15,7 +15,6 @@ const MyPostedJobs = () => {
     const handleDeleteJob = async (id) => {
         try {
             const response = await axios.delete(`http://localhost:5000/job/${id}`);
-            console.log(response.data.deletedCount);
 
             if (response.data.deletedCount > 0) {
                 toast.warn('Job deleted successfully', {
@@ -118,10 +117,10 @@ const MyPostedJobs = () => {
                                         <span>Max: {job?.salaryRange?.max} {job?.salaryRange?.currency?.toUpperCase()}</span>
                                     </td>
                                     <td>
+                                        <Link to={`/applications/${job._id}`} className='btn btn-xs btn-success mr-2'>View Applications</Link>
                                         <Link to={`/jobDetails/${job._id}`} className='btn btn-xs btn-primary mr-2'>Details</Link>
-                                        <Link to={`/update-job/${job._id}`} className='btn btn-xs btn-success mr-2'>Edit</Link>
+                                        <Link to={`/update-job/${job._id}`} className='btn btn-xs btn-warning mr-2'>Edit</Link>
                                         <button onClick={() => handleDeleteJob(job._id)} className='btn btn-xs btn-error'>Delete</button>
-
                                     </td>
                                 </tr>)}
 

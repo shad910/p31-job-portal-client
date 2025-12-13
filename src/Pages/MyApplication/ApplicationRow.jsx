@@ -3,7 +3,9 @@ import { Link } from 'react-router';
 
 const ApplicationRow = ({ index, application, handleDelete }) => {
 
-    const { _id, company_logo, company, location, title, jobType, salaryRange, jobID, } = application;
+    const { _id, company_logo, company, location, title, jobType, salaryRange, jobID, status } = application;
+    console.log(status);
+    
 
     return (
         <tr>
@@ -36,6 +38,19 @@ const ApplicationRow = ({ index, application, handleDelete }) => {
                 <span>Min: {salaryRange?.min} {salaryRange?.currency?.toUpperCase()}</span>
                 <br />
                 <span>Max: {salaryRange?.max} {salaryRange?.currency?.toUpperCase()}</span>
+            </td>
+            <td>
+                <span
+                    className={`font-medium badge badge-sm ${{
+                            Pending: "badge-warning",
+                            Interview: "badge-info",
+                            Hired: "badge-success",
+                            Rejected: "badge-error",
+                        }[status] || "badge-ghost"
+                        }`}
+                >
+                    {status}
+                </span>
             </td>
             <td>
                 <Link to={`/jobDetails/${jobID}`} className='btn btn-xs btn-primary mr-2'>Details</Link>

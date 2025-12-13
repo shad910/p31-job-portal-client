@@ -75,7 +75,8 @@ const ApplicationList = ({ myApplicationPromise }) => {
                                 <th>Company Information</th>
                                 <th>Job Information</th>
                                 <th>Salary Range</th>
-                                <th>actions</th>
+                                <th>Status</th>
+                                <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>

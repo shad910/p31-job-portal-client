@@ -25,6 +25,7 @@ const JobApply = () => {
 
         const application = Object.fromEntries(formData.entries());
         application.jobID = id;
+        application.status = 'Pending';
 
         axios.post(`${import.meta.env.VITE_API_URL}/applications`, application)
             .then(response => {
@@ -32,7 +33,7 @@ const JobApply = () => {
                 
                 if (response.data.insertedId) {
 
-                    toast('🦄 Job added successfully!', {
+                    toast.success('Job added successfully!', {
                         position: "top-right",
                         autoClose: 5000,
                         hideProgressBar: false,
@@ -46,7 +47,7 @@ const JobApply = () => {
 
                     form.reset();
                 } else {
-                    toast.warn('Error', {
+                    toast.error('Error!', {
                         position: "top-right",
                         autoClose: 5000,
                         hideProgressBar: false,
