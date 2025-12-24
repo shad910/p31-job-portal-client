@@ -58,7 +58,7 @@ const MyPostedJobs = () => {
 
     if (postedJobs.length === 0) {
         return (
-            <section className='my-14 space-y-5'>
+            <section className='my-8 space-y-5'>
                 <div className='flex justify-center'>
                     <Lottie style={{ width: '300px' }} animationData={NoDataFound} loop={true} />
                 </div>

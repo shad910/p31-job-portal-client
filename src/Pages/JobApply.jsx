@@ -29,7 +29,6 @@ const JobApply = () => {
 
         axios.post(`${import.meta.env.VITE_API_URL}/applications`, application)
             .then(response => {
-                console.log();
                 
                 if (response.data.insertedId) {
 
@@ -87,7 +86,7 @@ const JobApply = () => {
                                 {/* Git-Hub Link */}
                                 <div>
                                     <label className="label">Git-Hub Link</label>
-                                    <input name='github' type="url" className="input" placeholder="Paste your Git-Hub link" requiredJ/>
+                                    <input name='github' type="url" className="input" placeholder="Paste your Git-Hub link" required/>
                                 </div>
                                 {/* LinkedIn Profile Link */}
                                 <div>

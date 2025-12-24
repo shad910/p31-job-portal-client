@@ -28,18 +28,13 @@ const UpdateJobDetails = () => {
         const requirementsClean = requirementsDirty.map(req => req.trim());
         newJobData.requirements = requirementsClean;
 
-
         // process responsibilities
         newJobData.responsibilities = newJobData.responsibilities.split(',').map(res => res.trim())
 
-        newJobData.status = "active";
-
         try {
             const updatedDoc = { ...newJobData };
-            console.log(updatedDoc);
 
             const response = await axios.patch(`http://localhost:5000/jobs/${id}`, updatedDoc);
-            console.log(response.data);
 
             if (response?.data?.modifiedCount) {
                 toast(`${updatedDoc.title || 'Job details'} has been updated successfully.`, {

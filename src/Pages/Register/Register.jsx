@@ -29,15 +29,6 @@ const Register = () => {
         const rePassword = form.rePassword.value;
         const terms = form.terms.checked;
 
-        const newUser = {
-            displayName: name,
-            username: username,
-            photoURL: photoURL,
-            email: email,
-        }
-
-        console.log(newUser);
-
         setSuccessMessage(false);
         setErrorMessage("");
 
@@ -88,7 +79,7 @@ const Register = () => {
                         theme: "light",
                         transition: Bounce,
                     });
-                    setUser({ ...user, displayName: name, photoURL: photoURL })
+                    setUser({ ...user, displayName: name, photoURL: photoURL, username: username})
                     navigate("/");
                 }).catch((error) => {
                     toast.error(`${error.message}`, {

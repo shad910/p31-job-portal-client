@@ -13,7 +13,7 @@ const MyApplication = () => {
     return (
         <section>
             <ApplicationStats></ApplicationStats>
-            <h1 className='poppins text-center text-3xl font-bold my-10'>My Applications</h1>
+            <h1 className='poppins text-center text-3xl font-bold my-8'>My Applications</h1>
             <Suspense fallback={<Loading></Loading>}>
                 <ApplicationList myApplicationPromise={myApplicationPromise(user?.email)}></ApplicationList>
             </Suspense>

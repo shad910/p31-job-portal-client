@@ -4,8 +4,6 @@ import { Link } from 'react-router';
 const ApplicationRow = ({ index, application, handleDelete }) => {
 
     const { _id, company_logo, company, location, title, jobType, salaryRange, jobID, status } = application;
-    console.log(status);
-    
 
     return (
         <tr>
@@ -54,6 +52,7 @@ const ApplicationRow = ({ index, application, handleDelete }) => {
             </td>
             <td>
                 <Link to={`/jobDetails/${jobID}`} className='btn btn-xs btn-primary mr-2'>Details</Link>
+                <Link to={`/update-application/${_id}`} className='btn btn-xs btn-warning mr-2'>Edit</Link>
                 <button onClick={() => handleDelete(_id)} className="btn btn-xs btn-error">
                     Delete
                 </button>
