@@ -80,12 +80,12 @@ const MyPostedJobs = () => {
                                 <th>Company Information</th>
                                 <th>Job Information</th>
                                 <th>Salary Range</th>
-                                <th>actions</th>
+                                <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
                             {postedJobs.map((job, index) =>
-                                <tr key={index}>
+                                <tr key={index} className="hover:bg-base-300">
                                     <th>
                                         <label>
                                             {index + 1}

@@ -6,7 +6,7 @@ const ApplicationRow = ({ index, application, handleDelete }) => {
     const { _id, company_logo, company, location, title, jobType, salaryRange, jobID, status } = application;
 
     return (
-        <tr>
+        <tr className="hover:bg-base-300">
             <th>
                 <label>
                     {index + 1}
