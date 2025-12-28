@@ -59,7 +59,7 @@ const router = createBrowserRouter([
       },
       {
         path: "my-posted-jobs",
-        loader: () => axios(`${import.meta.env.VITE_API_URL}/jobs`),
+        loader: () => axios(`${import.meta.env.VITE_API_URL}/jobs`, {withCredentials:true}),
         HydrateFallback: Loading,
         element: <PrivateRoute>
           <MyPostedJobs></MyPostedJobs>

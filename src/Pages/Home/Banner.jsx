@@ -71,7 +71,7 @@ const Banner = () => {
                             animate={{
                                 x: [100, 160, 100],
 
-                                transition: { duration: 10, delay: 2, repeat: Infinity }
+                                transition: { duration: 10, delay:1, repeat: Infinity }
                             }}
                             className="max-w-xs rounded-t-[40px] rounded-r-[30px] border-blue-400 border-l-8 border-b-8 shadow-2xl"
                         />

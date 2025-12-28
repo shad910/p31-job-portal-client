@@ -41,11 +41,11 @@ const AuthProvider = ({ children }) => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
             setUser(currentUser);
             setLoading(false);
-            
+
             if (currentUser?.email) {
                 const userData = { email: currentUser.email };
-                axios.post(`${import.meta.env.VITE_API_URL}/jwt`, userData)
-                    .then(response => console.log(`TOKEN= `,response.data))
+                axios.post(`${import.meta.env.VITE_API_URL}/jwt`, userData, { withCredentials: true })
+                    .then(response => console.log(`TOKEN= `, response.data))
                     .catch(error => console.log(error));
             };
         });

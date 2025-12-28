@@ -16,7 +16,7 @@ const Categories = () => {
     return (
         <div className='flex justify-center mt-1'>
             {categories.map((category, index) => (
-                <ul key={index} className="lg:menu Lg:menu-horizontal bg-base-200 ">
+                <ul key={index} className="hidden lg:menu Lg:menu-horizontal bg-base-200 ">
                     <li>
                         <NavLink to={`/category/${category.categoryID}`} className='menu'>{category.categoryName}</NavLink>
                     </li>
