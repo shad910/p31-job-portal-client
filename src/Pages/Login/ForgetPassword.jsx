@@ -1,12 +1,13 @@
-import React, { use, useState } from 'react';
-import AuthContext from '../../Contexts/AuthContext';
+import React, { useState } from 'react';
+import useAuth from '../../Hooks/UseAuth';
 import { sendPasswordResetEmail } from 'firebase/auth';
 import { Link } from 'react-router';
+import { Helmet } from 'react-helmet-async';
 
 
 const ForgetPassword = () => {
 
-    const { auth } = use(AuthContext)
+    const { auth } = useAuth();
 
     const [errorMessage, setErrorMessage] = useState("");
 
@@ -28,6 +29,11 @@ const ForgetPassword = () => {
 
     return (
         <div className="min-h-screen flex items-center justify-center  px-4">
+
+            <Helmet>
+                <title>CAREER-CODE | Forget Password</title>
+            </Helmet>
+
             <div className="max-w-md w-full p-8 space-y-6  rounded-2xl shadow-md">
                 <div className="text-center">
                     <p className="text-sm text-blue-600 font-medium">Forgot Password</p>

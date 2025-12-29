@@ -1,10 +1,9 @@
 import React from 'react';
-import { use } from 'react';
-import AuthContext from '../../Contexts/AuthContext';
+import useAuth from '../../Hooks/UseAuth';
 
 const ApplicationStats = () => {
     
-       const { user } = use(AuthContext);
+       const { user } = useAuth();
 
     return (
         <div className="w-full max-w-sm mx-auto rounded-xl shadow-lg bg-base-100 p-5 my-5">

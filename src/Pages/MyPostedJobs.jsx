@@ -1,20 +1,21 @@
-import React, { use, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useLoaderData } from 'react-router';
-import AuthContext from '../Contexts/AuthContext';
+import useAuth from '../Hooks/UseAuth';
 import axios from 'axios';
 import Lottie from 'lottie-react';
 import NoDataFound from "../assets/lottieFiles/NoDataFound.json";
 import { Bounce, toast, ToastContainer } from 'react-toastify';
+import { Helmet } from 'react-helmet-async';
 
 const MyPostedJobs = () => {
 
-    const { user } = use(AuthContext);
+    const { user } = useAuth();
     const { data } = useLoaderData();
     const [postedJobs, setPostedJobs] = useState([]);
 
     const handleDeleteJob = async (id) => {
         try {
-            const response = await axios.delete(`http://localhost:5000/job/${id}`);
+            const response = await axios.delete(`${import.meta.env.VITE_API_URL}/job/${id}`);
 
             if (response.data.deletedCount > 0) {
                 toast.warn('Job deleted successfully', {
@@ -59,6 +60,9 @@ const MyPostedJobs = () => {
     if (postedJobs.length === 0) {
         return (
             <section className='my-8 space-y-5'>
+                <Helmet>
+                    <title>CAREER-CODE | My Posted Jobs</title>
+                </Helmet>
                 <div className='flex justify-center'>
                     <Lottie style={{ width: '300px' }} animationData={NoDataFound} loop={true} />
                 </div>
@@ -71,6 +75,9 @@ const MyPostedJobs = () => {
     } else {
         return (
             <section className='my-5 lg:my-10 space-y-6'>
+                <Helmet>
+                    <title>CAREER-CODE | My Posted Jobs</title>
+                </Helmet>
                 <h1 className='poppins text-center text-3xl font-bold'>My Posted Jobs</h1>
                 <div className="overflow-x-auto">
                     <table className="table w-10/12 mx-auto">

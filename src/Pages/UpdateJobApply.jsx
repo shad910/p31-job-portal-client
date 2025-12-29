@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { useLoaderData, useNavigate } from 'react-router';
 import { Bounce, toast, ToastContainer } from 'react-toastify';
 
@@ -58,6 +59,9 @@ const UpdateJobApply = () => {
 
     return (
         <section className='my-6 lg:my-10 space-y-6'>
+            <Helmet>
+                <title>CAREER-CODE | Update Job Application</title>
+            </Helmet>
 
             <h1 className='poppins text-center text-3xl font-bold '>Update your Application Details</h1>
 

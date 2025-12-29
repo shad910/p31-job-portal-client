@@ -1,12 +1,12 @@
-import React, { use, useState } from 'react';
+import React, { useState } from 'react';
 import { Link, NavLink } from 'react-router';
-import AuthContext from '../Contexts/AuthContext';
+import useAuth from '../Hooks/UseAuth';
 import ThemeController from './ThemeController';
 
 
 const NavBar = () => {
 
-    const { user, handleLogout } = use(AuthContext);
+    const { user, handleLogout } = useAuth();
     const [isHovered, setIsHovered] = useState(false);
 
     const links = <>

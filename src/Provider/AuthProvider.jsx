@@ -34,7 +34,9 @@ const AuthProvider = ({ children }) => {
     }
 
     const handleLogout = () => {
-        signOut(auth).then(() => { }).catch((error) => console.log(error));
+        signOut(auth)
+            .then(() => { })
+            .catch((error) => console.log(error));
     }
 
     useEffect(() => {
@@ -42,10 +44,13 @@ const AuthProvider = ({ children }) => {
             setUser(currentUser);
             setLoading(false);
 
+            console.log(currentUser);
+            
+
             if (currentUser?.email) {
                 const userData = { email: currentUser.email };
                 axios.post(`${import.meta.env.VITE_API_URL}/jwt`, userData, { withCredentials: true })
-                    .then(response => console.log(`TOKEN= `, response.data))
+                    .then(response =>  response.data)
                     .catch(error => console.log(error));
             };
         });

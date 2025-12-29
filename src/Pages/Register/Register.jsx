@@ -1,6 +1,6 @@
-import React, { use, useState } from 'react';
+import React, { useState } from 'react';
 import { Link, useNavigate, } from 'react-router';
-import AuthContext from '../../Contexts/AuthContext';
+import useAuth from '../../Hooks/UseAuth';
 import { updateProfile } from 'firebase/auth';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { Bounce, toast } from 'react-toastify';
@@ -10,7 +10,7 @@ import login from "../../assets/lottieFiles/Login.json";
 
 const Register = () => {
 
-    const { auth, createUser, user, setUser, googleLogin } = use(AuthContext);
+    const { auth, createUser, user, setUser, googleLogin } = useAuth();
     const [eye, setEye] = useState(false);
     const [eye2, setEye2] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
@@ -79,7 +79,7 @@ const Register = () => {
                         theme: "light",
                         transition: Bounce,
                     });
-                    setUser({ ...user, displayName: name, photoURL: photoURL, username: username})
+                    setUser({ ...user, displayName: name, photoURL: photoURL, username: username })
                     navigate("/");
                 }).catch((error) => {
                     toast.error(`${error.message}`, {
@@ -139,7 +139,7 @@ const Register = () => {
         <div>
 
             <Helmet>
-                <title>Register</title>
+                <title>CAREER-CODE | Register</title>
             </Helmet>
 
             <section className='absolute right-8 top-96 hidden md:flex'>

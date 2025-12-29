@@ -1,12 +1,12 @@
 import React from 'react';
-import AuthContext from '../Contexts/AuthContext';
 import { useLoaderData } from 'react-router';
 import axios from 'axios';
 import { Bounce, toast, ToastContainer } from 'react-toastify';
+import { Helmet } from 'react-helmet-async';
 
 const UpdateJobDetails = () => {
-    
-    const {data} = useLoaderData()
+
+    const { data } = useLoaderData()
     const id = data._id;
 
     const handleAddJob = async (e) => {
@@ -34,7 +34,7 @@ const UpdateJobDetails = () => {
         try {
             const updatedDoc = { ...newJobData };
 
-            const response = await axios.patch(`http://localhost:5000/jobs/${id}`, updatedDoc);
+            const response = await axios.patch(`${import.meta.env.VITE_API_URL}/jobs/${id}`, updatedDoc);
 
             if (response?.data?.modifiedCount) {
                 toast(`${updatedDoc.title || 'Job details'} has been updated successfully.`, {
@@ -61,6 +61,11 @@ const UpdateJobDetails = () => {
 
     return (
         <section className="card bg-base-100 w-full shrink-0  mb-20">
+
+            <Helmet>
+                <title>CAREER-CODE | Update Job Details</title>
+            </Helmet>
+
             <div className="card-body">
                 <form onSubmit={handleAddJob} className="fieldset">
                     <legend className='poppins text-center text-2xl font-bold my-4'>Update Job Details</legend>

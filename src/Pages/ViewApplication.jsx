@@ -7,6 +7,7 @@ import { IoDocumentAttach, IoDocumentAttachOutline } from "react-icons/io5";
 import { GrStatusUnknown } from "react-icons/gr";
 import { Link, useLoaderData } from 'react-router';
 import { Bounce, toast, ToastContainer } from 'react-toastify';
+import { Helmet } from 'react-helmet-async';
 
 const ViewApplication = () => {
 
@@ -54,6 +55,11 @@ const ViewApplication = () => {
     if (data.length === 0) {
         return (
             <section className='my-8 space-y-5'>
+
+                <Helmet>
+                    <title>CAREER-CODE | View Application Details</title>
+                </Helmet>
+
                 <div className='flex justify-center'>
                     <Lottie style={{ width: '300px' }} animationData={NoDataFound} loop={true} />
                 </div>
@@ -68,6 +74,11 @@ const ViewApplication = () => {
     else {
         return (
             <div className='space-y-5 my-8'>
+
+                <Helmet>
+                    <title>CAREER-CODE | View Application Details</title>
+                </Helmet>
+
                 <h1 className='poppins text-xl md:text-2xl lg:text-3xl text-center font-medium'>Applicant List</h1>
                 <div className="overflow-x-auto">
                     <table className="table w-11/12 mx-auto">

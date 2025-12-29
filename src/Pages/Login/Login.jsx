@@ -1,16 +1,16 @@
-import React, { use, useState } from 'react';
+import React, { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router';
 import { Helmet } from 'react-helmet-async';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import Lottie from "lottie-react";
 import login from "../../assets/lottieFiles/Login.json";
-import AuthContext from '../../Contexts/AuthContext';
+import useAuth from '../../Hooks/UseAuth';
 import { Bounce, toast } from 'react-toastify';
 
 
 const Login = () => {
 
-    const { loginUser, setUser, googleLogin, githubLogin } = use(AuthContext);
+    const { loginUser, setUser, googleLogin, githubLogin } = useAuth();
 
     const [eye, setEye] = useState(false);
     const [successMessage, setSuccessMessage] = useState(false);
@@ -104,7 +104,9 @@ const Login = () => {
 
         <div className='relative'>
 
-            <Helmet>Login</Helmet>
+            <Helmet>
+                <title>CAREER-CODE | Login</title>
+            </Helmet>
 
             <section className='absolute right-8 top-28 hidden md:flex'>
                 <Lottie style={{ width: '400px' }} animationData={login} loop={true} />

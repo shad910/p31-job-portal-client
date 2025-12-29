@@ -1,21 +1,29 @@
-import React, { Suspense, use } from 'react';
+import React, { Suspense } from 'react';
 import Loading from '../../Shared/Loading';
-import AuthContext from '../../Contexts/AuthContext';
-import { myApplicationPromise } from '../../api/ApplicationsAPI';
+import useAuth from '../../Hooks/UseAuth';
+// import { myApplicationPromise } from '../../api/ApplicationsAPI';
+import useApplicationAPI from '../../api/useApplicationAPI';
 import ApplicationStats from './ApplicationStats';
 import ApplicationList from './ApplicationList';
 import { Bounce, ToastContainer } from 'react-toastify';
+import { Helmet } from 'react-helmet-async';
 
 const MyApplication = () => {
 
-    const { user } = use(AuthContext);
+    const { user } = useAuth();
+    const { myApplicationPromise } = useApplicationAPI();
 
     return (
         <section>
+
+            <Helmet>
+                <title>CAREER-CODE | My Applications</title>
+            </Helmet>
+
             <ApplicationStats></ApplicationStats>
             <h1 className='poppins text-center text-3xl font-bold my-8'>My Applications</h1>
             <Suspense fallback={<Loading></Loading>}>
-                <ApplicationList myApplicationPromise={myApplicationPromise(user?.email, user?.accessToken)}></ApplicationList>
+                <ApplicationList myApplicationPromise={myApplicationPromise(user?.email)}></ApplicationList>
             </Suspense>
 
             <ToastContainer

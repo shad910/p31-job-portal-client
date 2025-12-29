@@ -9,7 +9,7 @@ import { Bounce, toast } from 'react-toastify';
 const ApplicationList = ({ myApplicationPromise }) => {
 
     const jobData = use(myApplicationPromise);
-    const initialApplications = jobData?.data || [];
+    const initialApplications = jobData || [];
     const [applications, setApplications] = useState(initialApplications);
 
     const handleDelete = async (id) => {

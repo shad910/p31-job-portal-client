@@ -1,13 +1,31 @@
 import { FaMapMarkerAlt, FaLock, FaClock } from "react-icons/fa";
 import { Link } from "react-router";
+import { motion } from "motion/react";
 
-const JobCards = ({ job }) => {
+
+const JobCards = ({ job, index }) => {
 
   const { _id, company_logo, company, location, title, jobType, description, requirements, salaryRange, status } = job;
 
   return (
-    <div
-      className="w-72 flex flex-col bg-base-100 text-base-content shadow-lg rounded-2xl p-5 border border-base-300 hover:shadow-xl transition duration-300"
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{
+        duration: 0.10,
+        delay: index * 0.10,
+        easing: "ease-out",
+      }}
+      whileHover={{
+        y: -4,
+        scale: 1.0,
+        transition: {
+          duration: 0.18,
+          easing: "ease-out",
+        },
+      }}
+      className="w-72 flex flex-col bg-base-100 text-base-content shadow-lg rounded-2xl p-5 border border-base-300 hover:shadow-xl transition"
     >
       {/* Header */}
       <div className="flex items-center gap-3 mb-4 flex-1">
@@ -57,9 +75,9 @@ const JobCards = ({ job }) => {
       <div className="flex justify-between items-center flex-1">
         <span className="text-blue-500 font-bold">BDT {salaryRange.max}</span>
         <span className="text-xs opacity-70">/Hour</span>
-        <Link to={`/jobDetails/${_id}`} className="btn btn-primary btn-sm ml-auto">Details</Link>
+        <Link to={`/jobDetails/${_id}`} className="btn btn-primary btn-soft btn-sm ml-auto">Details</Link>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

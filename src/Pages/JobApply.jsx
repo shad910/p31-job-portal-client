@@ -1,13 +1,13 @@
-import React, { use } from 'react';
+import React from 'react';
 import { useLoaderData } from 'react-router';
-import AuthContext from '../Contexts/AuthContext';
+import useAuth from '../Hooks/UseAuth';
 import Lottie from 'lottie-react';
 import notebook from '../assets/lottieFiles/notebook.json';
 import axios from 'axios';
 import { Bounce, toast, ToastContainer } from 'react-toastify';
 
 const JobApply = () => {
-    const { user } = use(AuthContext)
+    const { user } = useAuth();
     const { data } = useLoaderData();
     const id = data._id;
 

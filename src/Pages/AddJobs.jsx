@@ -1,7 +1,8 @@
-import React, { use } from 'react';
-import AuthContext from '../Contexts/AuthContext';
+import React from 'react';
+import useAuth from '../Hooks/UseAuth';
 import axios from 'axios';
 import { Bounce, toast, ToastContainer } from 'react-toastify';
+import { Helmet } from 'react-helmet-async';
 
 // 1. Define the Categories with their IDs
 const categories = [
@@ -20,7 +21,7 @@ const categories = [
 
 const AddJobs = () => {
 
-    const { user } = use(AuthContext);
+    const { user } = useAuth();
 
     const handleAddJob = (e) => {
         e.preventDefault();
@@ -99,6 +100,11 @@ const AddJobs = () => {
 
     return (
         <section className="card bg-base-100 w-full shrink-0  mb-20">
+
+            <Helmet>
+                <title>CAREER-CODE | Add New Jobs</title>
+            </Helmet>
+
             <div className="card-body">
                 <form onSubmit={handleAddJob} className="fieldset">
                     <legend className='poppins text-center text-3xl font-bold my-4'>Add new jobs</legend>
@@ -118,7 +124,7 @@ const AddJobs = () => {
                     {/* Company Logo */}
                     <div>
                         <label className="label">Company Logo</label>
-                        <input name='company_logo' type="url" className="input w-full" placeholder="Paste the logo url" required />
+                        <input name='company_logo' type="url" className="input w-full" placeholder="Paste the logo url (40 x 40)" required />
                     </div>
 
                     {/* Company Location */}
